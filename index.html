@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BudGet</title>
+</head>
+<body>
+    <h1>Budget: {{ budget }} €</h1>
+    <h2>Verbleibend: <span style="color: {{ 'red' if verbleibend < 100 else 'green' }}">{{ verbleibend }} €</span></h2>
+    <h3>Gesamtausgaben: {{ gesamtausgaben }} €</h3>
+
+    <form method="post">
+        <input name="beschreibung" placeholder="Was gekauft?" required>
+        <input name="betrag" type="number" step="0.01" placeholder="Betrag (€)" required>
+        <button type="submit">Hinzufügen</button>
+    </form>
+
+    <ul>
+        {% for eintrag in ausgaben %}
+            <li>{{ eintrag.beschreibung }} – {{ eintrag.betrag }} €</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
